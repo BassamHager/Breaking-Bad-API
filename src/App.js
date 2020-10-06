@@ -10,7 +10,7 @@ import CharacterGrid from './components/characters/CharacterGrid';
 import Search from './components/ui/Search';
 
 const App = () => {
-  const { items, setItems, isLoading, setIsLoading, query, setQuery } = useContext(AppContext)
+  const { setItems, setIsLoading, query } = useContext(AppContext)
 
   const fetchItems = useCallback(async () => {
     const result = await axios(`https://www.breakingbadapi.com/api/characters?name=${query}`)
@@ -23,11 +23,13 @@ const App = () => {
     fetchItems()
   }, [fetchItems])
 
-  return <div className="container">
-    <Header />
-    <Search getQuery={str => setQuery(str)} />
-    <CharacterGrid items={items} isLoading={isLoading} />
-  </div>
+  return (
+    <div className="container">
+      <Header />
+      <Search />
+      <CharacterGrid />
+    </div>
+  )
 }
 
 export default App;

@@ -1,12 +1,9 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
+// context
+import { AppContext } from '../../context/AppContext'
 
-const Search = ({ getQuery }) => {
-    const [text, setText] = useState('')
-
-    const onChange = (q) => {
-        setText(q)
-        getQuery(q)
-    }
+const Search = () => {
+    const { query, setQuery } = useContext(AppContext)
 
     return (
         <section className='search'>
@@ -15,8 +12,8 @@ const Search = ({ getQuery }) => {
                     type='text'
                     className='form-control'
                     placeholder='Search characters'
-                    value={text}
-                    onChange={(e) => onChange(e.target.value)}
+                    value={query}
+                    onChange={(e) => setQuery(e.target.value)}
                     autoFocus
                 />
             </form>

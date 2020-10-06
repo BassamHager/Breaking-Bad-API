@@ -8,9 +8,13 @@ import Spinner from '../ui/Spinner'
 const CharacterGrid = () => {
     const { items, isLoading } = useContext(AppContext)
 
-    return isLoading ? <Spinner /> : <section className='cards'>{
-        items.map(item => (<CharItem key={item.char_id} item={item} />))
-    }</section>
+    return isLoading
+        ? <Spinner />
+        : <section className='cards'>
+            {
+                items.map(item => (<CharItem key={item.char_id} item={item} />))
+            }
+        </section>
 }
 
 export default CharacterGrid
